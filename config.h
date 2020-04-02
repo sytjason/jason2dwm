@@ -77,6 +77,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },
     { 0,              XF86XK_MonBrightnessUp,  spawn,          {.v = upbright } },
     { 0,              XF86XK_MonBrightnessDown,spawn,          {.v = downbright } },
 	{ 0, 						PRINTSCREEN,   spawn, 		   {.v = screenshot } },
