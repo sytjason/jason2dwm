@@ -72,6 +72,7 @@ static const char *upbright[] = { "xbacklight", "-inc", "1", NULL };
 static const char *downbright[] = { "xbacklight", "-dec", "1", NULL };
 static const char *screenshot[] = { "gnome-screenshot", NULL };
 static const char *screenshotArea[] = { "gnome-screenshot", "-a", NULL };
+static const char *screenlock[] = {"xscreensaver-command", "-lock", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -82,6 +83,7 @@ static Key keys[] = {
     { 0,              XF86XK_MonBrightnessDown,spawn,          {.v = downbright } },
 	{ 0, 						PRINTSCREEN,   spawn, 		   {.v = screenshot } },
 	{ MODKEY, 					PRINTSCREEN,   spawn, 		   {.v = screenshotArea } },
+	{ MODKEY|ShiftMask, 			XK_l,      spawn, 		   {.v = screenlock } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
