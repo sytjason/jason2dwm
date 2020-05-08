@@ -72,7 +72,8 @@ static const char *upbright[] = { "xbacklight", "-inc", "1", NULL };
 static const char *downbright[] = { "xbacklight", "-dec", "1", NULL };
 static const char *screenshot[] = { "gnome-screenshot", NULL };
 static const char *screenshotArea[] = { "gnome-screenshot", "-a", NULL };
-static const char *screenlock[] = {"xscreensaver-command", "-lock", NULL };
+static const char *screenlock[] = { "xscreensaver-command", "-lock", NULL };
+static const char *mictoggle[] = { "amixer", "set", "Capture", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -84,6 +85,7 @@ static Key keys[] = {
 	{ 0, 						PRINTSCREEN,   spawn, 		   {.v = screenshot } },
 	{ MODKEY, 					PRINTSCREEN,   spawn, 		   {.v = screenshotArea } },
 	{ MODKEY|ShiftMask, 			XK_l,      spawn, 		   {.v = screenlock } },
+	{ 0, 				XF86XK_AudioMicMute,   spawn, 		   {.v = mictoggle } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
