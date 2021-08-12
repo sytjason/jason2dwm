@@ -840,6 +840,7 @@ drawbar(Monitor *m)
 	int boxs = drw->fonts->h / 9;
 	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
+  XImage *icon;
 	Client *c;
 
 	if(showsystray && m == systraytomon(m))
@@ -882,12 +883,16 @@ drawbar(Monitor *m)
 			for (c = m->clients; c; c = c->next) {
 				if (!ISVISIBLE(c))
 					continue;
-				if (m->sel == c)
+        if (m->sel == c){
 					scm = SchemeSel;
-				else if (HIDDEN(c))
+          icon = m->sel->icon;
+        } else if (HIDDEN(c)) {
 					scm = SchemeHid;
-				else
+          icon = c->icon;
+        } else {
 					scm = SchemeNorm;
+          icon = c->icon;
+        }
 				drw_setscheme(drw, scheme[scm]);
 
 				if (remainder >= 0) {
@@ -896,9 +901,10 @@ drawbar(Monitor *m)
 					}
 					remainder--;
 				}
-				drw_text(drw, x, 0, tabw, bh, lrpad / 2 + (m->sel->icon ? m->sel->icon->width + ICONSPACING : 0), c->name, 0);
+
+				drw_text(drw, x, 0, tabw, bh, lrpad / 2 + (icon ? icon->width + ICONSPACING : 0), c->name, 0);
         static uint32_t tmp[ICONSIZE * ICONSIZE];
-        if (m->sel->icon) drw_img(drw, x + lrpad / 2, (bh - m->sel->icon->height) / 2, m->sel->icon, tmp);
+        if (icon) drw_img(drw, x + lrpad / 2, (bh - icon->height) / 2, icon, tmp);
 				x += tabw;	
 			}
 		} else {
