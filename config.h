@@ -69,6 +69,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "terminator", NULL };
 static const char *nemocmd[] = { "nemo", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
+static const char *spotifycmd[] = { "spotify", NULL };
 
 static const char *upbright[] = { "xbacklight", "-inc", "1", NULL };
 static const char *downbright[] = { "xbacklight", "-dec", "1", NULL };
@@ -83,6 +84,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
   { MODKEY|ShiftMask,             XK_n,      spawn,          {.v = nemocmd } },
   { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = firefoxcmd} },
+  { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = spotifycmd} },
 	{ MODKEY|ControlMask,           XK_f,      fullscreen,     {0} },
   { 0,              XF86XK_MonBrightnessUp,  spawn,          {.v = upbright } },
   { 0,              XF86XK_MonBrightnessDown,spawn,          {.v = downbright } },
