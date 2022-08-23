@@ -11,7 +11,6 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Classic Console:size=15" };
 static const char dmenufont[]       = "Classic Console:size=15";
-static const char rofiscriptpath[]     = "$HOME/jason2dwm/scripts/rofi-search";
 static const unsigned int systraypinning = 1;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
@@ -67,7 +66,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray2, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "terminator", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 static const char *fmcmd[] = { "pcmanfm", NULL };
 static const char *notecmd[] = { "notepadqq", NULL };
 static const char *browsercmd[] = { "qutebrowser", NULL };
@@ -80,11 +79,14 @@ static const char *screenshotArea[] = { "gnome-screenshot", "-a", NULL };
 static const char *screenlock[] = { "xscreensaver-command", "-lock", NULL };
 static const char *mictoggle[] = { "amixer", "set", "Capture", "toggle", NULL };
 static const char *rofisearch[] = { "/home/jason/jason2dwm/scripts/rofi-search", NULL };
+static const char *powermenu[] = { "/home/jason/jason2dwm/scripts/powermenu.sh", NULL };
+
 
 static Key keys[] = {
   /* modifier                     key        function        argument */
   { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
   { MODKEY,                       XK_x,      spawn,          {.v = rofisearch } },
+  { MODKEY|ControlMask,           XK_Delete, spawn,          {.v = powermenu } },
   { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
   { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = fmcmd } },
   { MODKEY|ShiftMask,             XK_n,      spawn,          {.v = notecmd } },

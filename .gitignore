@@ -2,6 +2,7 @@
 *.orig
 *.o
 *.rej
+.ccls-cache
 dwm
 patches
 tags
