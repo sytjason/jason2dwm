@@ -1,8 +1,10 @@
-*.bak
-*.orig
-*.o
-*.rej
-.ccls-cache
+**/*.bak
+**/*.orig
+**/*.o
+**/*.rej
+**/.ccls-cache
 dwm
 patches
 tags
+.cache/
+compile_commands.json

@@ -66,10 +66,10 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray2, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
 static const char *fmcmd[] = { "pcmanfm", NULL };
 static const char *notecmd[] = { "notepadqq", NULL };
-static const char *browsercmd[] = { "qutebrowser", NULL };
+static const char *browsercmd[] = { "brave", NULL };
 static const char *spotifycmd[] = { "spotify", NULL };
 
 static const char *upbright[] = { "xbacklight", "-inc", "1", NULL };
@@ -80,6 +80,7 @@ static const char *screenlock[] = { "xscreensaver-command", "-lock", NULL };
 static const char *mictoggle[] = { "amixer", "set", "Capture", "toggle", NULL };
 static const char *rofisearch[] = { "/home/jason/jason2dwm/scripts/rofi-search", NULL };
 static const char *powermenu[] = { "/home/jason/jason2dwm/scripts/powermenu.sh", NULL };
+static const char *emoji[] = { "rofi", "-modi", "emoji", "-show", "emoji", NULL };
 
 
 static Key keys[] = {
@@ -92,6 +93,7 @@ static Key keys[] = {
   { MODKEY|ShiftMask,             XK_n,      spawn,          {.v = notecmd } },
   { MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browsercmd} },
   { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = spotifycmd} },
+  { MODKEY|ControlMask,           XK_semicolon,spawn,          {.v = emoji} },
   { MODKEY|ControlMask,           XK_f,      fullscreen,     {0} },
   { 0,              XF86XK_MonBrightnessUp,  spawn,          {.v = upbright } },
   { 0,              XF86XK_MonBrightnessDown,spawn,          {.v = downbright } },
