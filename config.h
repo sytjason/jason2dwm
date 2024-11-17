@@ -66,8 +66,9 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray2, "-sf", col_gray4, NULL };
+static const char *arandr[] = { "arandr" };
 static const char *termcmd[]  = { "kitty", NULL };
-static const char *fmcmd[] = { "pcmanfm", NULL };
+static const char *pcmanfm[]  = { "pcmanfm", NULL };
 static const char *notecmd[] = { "notepadqq", NULL };
 static const char *browsercmd[] = { "brave", NULL };
 static const char *spotifycmd[] = { "spotify", NULL };
@@ -75,12 +76,13 @@ static const char *spotifycmd[] = { "spotify", NULL };
 static const char *upbright[] = { "xbacklight", "-inc", "1", NULL };
 static const char *downbright[] = { "xbacklight", "-dec", "1", NULL };
 static const char *screenshot[] = { "gnome-screenshot", NULL };
-static const char *screenshotArea[] = { "gnome-screenshot", "-a", NULL };
+static const char *screenshotArea[] = { "flameshot", "gui", NULL };
 static const char *screenlock[] = { "xscreensaver-command", "-lock", NULL };
 static const char *mictoggle[] = { "amixer", "set", "Capture", "toggle", NULL };
 static const char *rofisearch[] = { "/home/jason/jason2dwm/scripts/rofi-search", NULL };
 static const char *powermenu[] = { "/home/jason/jason2dwm/scripts/powermenu.sh", NULL };
 static const char *emoji[] = { "rofi", "-modi", "emoji", "-show", "emoji", NULL };
+static const char *logseq[] = { "/home/jason/jason2dwm/scripts/start-logseq.sh", NULL };
 
 
 static Key keys[] = {
@@ -89,16 +91,18 @@ static Key keys[] = {
   { MODKEY,                       XK_x,      spawn,          {.v = rofisearch } },
   { MODKEY|ControlMask,           XK_Delete, spawn,          {.v = powermenu } },
   { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-  { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = fmcmd } },
+  { MODKEY|ShiftMask,             XK_a,      spawn,          {.v = arandr } },
+  { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = pcmanfm } },
   { MODKEY|ShiftMask,             XK_n,      spawn,          {.v = notecmd } },
   { MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browsercmd} },
   { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = spotifycmd} },
+  { MODKEY|ShiftMask,             XK_g,      spawn,          {.v = logseq} },
   { MODKEY|ControlMask,           XK_semicolon,spawn,          {.v = emoji} },
   { MODKEY|ControlMask,           XK_f,      fullscreen,     {0} },
   { 0,              XF86XK_MonBrightnessUp,  spawn,          {.v = upbright } },
   { 0,              XF86XK_MonBrightnessDown,spawn,          {.v = downbright } },
   { 0, 						PRINTSCREEN,   spawn, 		   {.v = screenshot } },
-  { MODKEY, 					PRINTSCREEN,   spawn, 		   {.v = screenshotArea } },
+  { MODKEY|ShiftMask, 					XK_r,   spawn, 		   {.v = screenshotArea } },
   { MODKEY|ShiftMask, 			XK_l,      spawn, 		   {.v = screenlock } },
   { 0, 				XF86XK_AudioMicMute,   spawn, 		   {.v = mictoggle } },
   { MODKEY,                       XK_b,      togglebar,      {0} },
